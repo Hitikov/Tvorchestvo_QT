@@ -2,6 +2,7 @@
 #define COREWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CoreWindow; }
@@ -23,6 +24,16 @@ private slots:
     void on_pushButton_update_project_clicked();
 
     void on_pushButton_directory_project_clicked();
+
+    void on_new_element_selected_project();
+
+    void on_pushButton_update_record_clicked();
+
+    void on_pushButton_directory_result_clicked();
+
+    void on_new_element_selected_record();
+
+    void on_action_start_testing_triggered();
 
 private:
     Ui::CoreWindow *ui;

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>715</width>
-    <height>404</height>
+    <width>664</width>
+    <height>452</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,11 +17,17 @@
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
      <widget class="QTabWidget" name="file_navigation">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="toolTip">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_test_project">
        <attribute name="title">
@@ -98,11 +104,46 @@
              <bool>true</bool>
             </property>
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+             <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="maximumSize">
+             <size>
+              <width>10000000</width>
+              <height>70</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <kerning>true</kerning>
+             </font>
+            </property>
+            <property name="showGrid">
+             <bool>true</bool>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+            <property name="cornerButtonEnabled">
+             <bool>true</bool>
+            </property>
+            <property name="rowCount">
+             <number>1</number>
+            </property>
+            <property name="columnCount">
+             <number>4</number>
+            </property>
+            <attribute name="horizontalHeaderMinimumSectionSize">
+             <number>150</number>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>150</number>
+            </attribute>
+            <attribute name="verticalHeaderMinimumSectionSize">
+             <number>24</number>
+            </attribute>
             <row>
              <property name="text">
               <string/>
@@ -120,22 +161,12 @@
             </column>
             <column>
              <property name="text">
-              <string>Кол-во вопросов</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Макс. кол-во баллов</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>Сохранение копии</string>
-             </property>
-            </column>
-            <column>
-             <property name="text">
               <string>Дата создания</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Кол-во вопросов</string>
              </property>
             </column>
            </widget>
@@ -164,7 +195,16 @@
              </widget>
             </item>
             <item>
-             <widget class="QTableWidget" name="tableWidget">
+             <widget class="QTableWidget" name="tableWidget_result">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>70</height>
+               </size>
+              </property>
+              <attribute name="horizontalHeaderMinimumSectionSize">
+               <number>150</number>
+              </attribute>
               <row>
                <property name="text">
                 <string/>
@@ -190,38 +230,12 @@
                 <string>Оценка</string>
                </property>
               </column>
-              <column>
-               <property name="text">
-                <string>Новый столбец</string>
-               </property>
-              </column>
-              <column>
-               <property name="text">
-                <string>Есть копия проекта</string>
-               </property>
-              </column>
              </widget>
             </item>
            </layout>
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <widget class="QPushButton" name="pushButton_open__connect_project">
-              <property name="text">
-               <string>Открыть связанный
-проект</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_open_details">
-              <property name="text">
-               <string>Открыть 
-расшифровку</string>
-              </property>
-             </widget>
-            </item>
             <item>
              <spacer name="verticalSpacer_2">
               <property name="orientation">
@@ -236,7 +250,7 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="pushButton_update_record">
               <property name="text">
                <string>Обновить список</string>
               </property>
@@ -265,7 +279,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>715</width>
+     <width>664</width>
      <height>21</height>
     </rect>
    </property>
@@ -274,7 +288,6 @@
      <string>Тестирование</string>
     </property>
     <addaction name="action_start_testing"/>
-    <addaction name="action_view_testing_record"/>
    </widget>
    <widget class="QMenu" name="menu_6">
     <property name="title">

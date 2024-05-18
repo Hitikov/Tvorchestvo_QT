@@ -9,24 +9,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    filesturcture.cpp \
     filesystemactions.cpp \
     main.cpp \
     corewindow.cpp \
-    testcreatorwindow.cpp \
-    testingexecution.cpp
+    testcreatorwindow.cpp
 
 HEADERS += \
+    WorkMode.h \
     corewindow.h \
-    filesturcture.h \
     filesystemactions.h \
-    testcreatorwindow.h \
-    testingexecution.h
+    testcreatorwindow.h
 
 FORMS += \
     corewindow.ui \
-    testcreatorwindow.ui \
-    testingexecution.ui
+    testcreatorwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
