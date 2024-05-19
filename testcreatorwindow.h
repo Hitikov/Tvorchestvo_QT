@@ -32,6 +32,8 @@ private slots:
 
     void on_questionTitle_textChanged(const QString &arg1);
 
+    void on_questionanswers_textChanged();
+
 private:
     void setFileContent(QString fileName);
 
@@ -39,7 +41,7 @@ private:
 
     QStringList fileContent;
 
-    QMap<QListWidgetItem*, QString> QuestionsContent;
+    QMap<QListWidgetItem*, QPair<QString, QString>> QuestionsContent;
 };
 
 #endif // TESTCREATORWINDOW_H

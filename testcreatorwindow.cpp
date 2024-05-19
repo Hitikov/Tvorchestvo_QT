@@ -9,8 +9,8 @@ TestCreatorWindow::TestCreatorWindow(QWidget *parent, QString fileName) :
     QDialog(parent),
     ui(new Ui::TestCreatorWindow)
 {
-    QWidget::setWindowTitle("Создание файла проекта");
     ui->setupUi(this);
+    QWidget::setWindowTitle("Создание файла проекта");
 
     //Проверка получения названия проекта, открытие если поле названия не пустое
     if (fileName != "")
@@ -51,7 +51,9 @@ void TestCreatorWindow::setFileContent(QString fileName)
     {
         ui->questionlist->addItem(*iter);
         ++iter;
-        QuestionsContent[ui->questionlist->item(ui->questionlist->count() - 1)] = *iter;
+        QuestionsContent[ui->questionlist->item(ui->questionlist->count() - 1)].first = *iter;
+        ++iter;
+        QuestionsContent[ui->questionlist->item(ui->questionlist->count() - 1)].second = *iter;
         ++iter;
     }
 
@@ -94,7 +96,8 @@ void TestCreatorWindow::on_Button_CreateStub_clicked()
     {
         QString questionTitle = ui->questionlist->item(i)->text();
         fileContent.push_back(questionTitle);
-        fileContent.push_back(QuestionsContent[ui->questionlist->item(i)]);
+        fileContent.push_back(QuestionsContent[ui->questionlist->item(i)].first);
+        fileContent.push_back(QuestionsContent[ui->questionlist->item(i)].second);
     }
 
     //Вызов функции создания/обновления файла
@@ -109,7 +112,7 @@ void TestCreatorWindow::on_ButtonHalt_clicked()
     this->close();
 }
 
-//Кнопка создания нового вопроса, переключение на него в списке вопросов
+//Создание нового вопроса, переключение на него в списке вопросов
 void TestCreatorWindow::on_ButtonCreateQuestion_clicked()
 {
     ui->questionlist->addItem("NewQuestion");
@@ -131,7 +134,14 @@ void TestCreatorWindow::on_ButtonDeleteQuestion_clicked()
 void TestCreatorWindow::on_questioncontent_textChanged()
 {
     //Обновление информации в словаре содержимого вопросов
-    QuestionsContent[ui->questionlist->currentItem()] = ui->questioncontent->toPlainText();
+    QuestionsContent[ui->questionlist->currentItem()].first = ui->questioncontent->toPlainText();
+}
+
+//Реакция на обновление содежимого текстового поля ответов
+void TestCreatorWindow::on_questionanswers_textChanged()
+{
+    //Обновление информации в словаре содержимого вопросов
+    QuestionsContent[ui->questionlist->currentItem()].second = ui->questionanswers->toPlainText();
 }
 
 //Реакция на обновление содежимого текстового поля заголовка вопроса
@@ -147,10 +157,12 @@ void TestCreatorWindow::on_questionlist_currentItemChanged(QListWidgetItem *curr
     Q_UNUSED(previous)
 
     //Проверка на отстутствие информации в словаре, если содержимое остутствует запись пустой строки
-    if (QuestionsContent[current].isNull()) QuestionsContent[current] = "";
+    if (QuestionsContent[current].first.isNull()) QuestionsContent[current].first = "";
+    if (QuestionsContent[current].second.isNull()) QuestionsContent[current].second = "";
     //Изменение текущего поля содержимого вопроса на сохраненное
-    ui->questioncontent->setText(QuestionsContent[current]);
+    ui->questioncontent->setText(QuestionsContent[current].first);
+    //Изменение текущего поля ответов на сохраненное
+    ui->questionanswers->setText(QuestionsContent[current].second);
     //Изменение текущего поля заголовка вопроса на сохраненное
     ui->questionTitle->setText(current->text());
 }
-
